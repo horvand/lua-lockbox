@@ -9,6 +9,9 @@ end
 if not ok then
     ok, e = pcall(require, "bit.numberlua") -- for Lua 5.1, https://github.com/tst2005/lua-bit-numberlua/
 end
+if not ok and _VERSION >= 'Lua 5.4' then
+    ok, e = pcall(require, "lockbox.util.bit32_lua54") -- for Lua 5.4, https://github.com/horvand/lua54-bit32
+end
 if not ok then
     error("no bitwise support found", 2)
 end
